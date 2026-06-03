@@ -45,11 +45,9 @@ export default function TasksPage() {
   });
 
   function toggle(t: Task) {
-    setDone((prev) => {
-      const next = { ...prev, [t.id]: !prev[t.id] };
-      if (next[t.id]) showToast("Task marked as done");
-      return next;
-    });
+    const willBeDone = !done[t.id];
+    setDone((prev) => ({ ...prev, [t.id]: !prev[t.id] }));
+    if (willBeDone) showToast("Task marked as done");
   }
 
   return (

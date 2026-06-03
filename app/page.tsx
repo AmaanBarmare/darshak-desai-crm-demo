@@ -65,12 +65,10 @@ export default function DashboardPage() {
       })
     : "";
 
-  function toggleTask(id: string, name: string) {
-    setDoneTasks((prev) => {
-      const next = { ...prev, [id]: !prev[id] };
-      if (next[id]) showToast("Task marked as done");
-      return next;
-    });
+  function toggleTask(id: string) {
+    const willBeDone = !doneTasks[id];
+    setDoneTasks((prev) => ({ ...prev, [id]: !prev[id] }));
+    if (willBeDone) showToast("Task marked as done");
   }
 
   return (
@@ -226,7 +224,7 @@ export default function DashboardPage() {
                 <input
                   type="checkbox"
                   checked={done}
-                  onChange={() => toggleTask(task.id, task.clientName)}
+                  onChange={() => toggleTask(task.id)}
                   className="mt-0.5 h-5 w-5 rounded border-outline text-primary focus:ring-primary"
                 />
                 <div className="flex-1">
