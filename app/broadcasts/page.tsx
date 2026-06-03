@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronDown, Send, Users, CheckCircle2 } from "lucide-react";
+import { ChevronDown, Send, Users, CheckCircle2, ShieldAlert } from "lucide-react";
 import { broadcastAudiences, broadcasts as seed } from "@/lib/mockData";
 import type { Broadcast } from "@/lib/types";
 import { MobileTopBar, PageHeading } from "@/components/ui";
@@ -12,6 +12,7 @@ export default function BroadcastsPage() {
   const [audience, setAudience] = useState(broadcastAudiences[0].key);
   const [message, setMessage] = useState("");
   const [history, setHistory] = useState<Broadcast[]>(seed);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const selected =
     broadcastAudiences.find((a) => a.key === audience) ?? broadcastAudiences[0];
@@ -88,9 +89,18 @@ export default function BroadcastsPage() {
           placeholder="Type your broadcast message here..."
           className="mb-1 w-full resize-none rounded-lg border border-outline-variant bg-surface-container-lowest p-3 text-body-lg outline-none transition-all placeholder:text-outline focus:border-2 focus:border-primary"
         />
-        <p className="mb-4 text-right text-label-sm text-on-surface-variant">
+        <p className="mb-3 text-right text-label-sm text-on-surface-variant">
           {message.length} characters
         </p>
+
+        {/* Regulatory guardrail */}
+        <div className="mb-4 flex items-start gap-2.5 rounded-lg bg-amber-50 p-3 ring-1 ring-amber-200">
+          <ShieldAlert className="mt-0.5 h-4 w-4 flex-shrink-0 text-amber-700" />
+          <p className="text-body-md text-amber-900">
+            Compliance: do not promise guaranteed returns or specific percentage
+            gains. Required under SEBI / IRDA advertising rules.
+          </p>
+        </div>
 
         <button
           onClick={send}
@@ -104,30 +114,46 @@ export default function BroadcastsPage() {
       <section>
         <h2 className="mb-3 text-headline-sm text-primary">Recent Broadcasts</h2>
         <div className="flex flex-col gap-card-gap">
-          {history.map((b) => (
-            <div
-              key={b.id}
-              className="rounded-xl bg-surface-container-lowest p-4 shadow-ambient"
-            >
-              <div className="mb-2 flex items-center justify-between">
-                <span className="flex items-center gap-1.5 text-label-md text-on-surface-variant">
-                  <Users className="h-3.5 w-3.5" />
-                  {b.recipients.toLocaleString("en-IN")} · {b.date}
-                </span>
-                <span
-                  className={`flex items-center gap-1 rounded-full px-2 py-1 text-label-sm font-bold ${
-                    b.status === "DELIVERED"
-                      ? "bg-green-100 text-green-800"
-                      : "bg-secondary-container text-on-secondary-container"
-                  }`}
-                >
-                  <CheckCircle2 className="h-3 w-3" />
-                  {b.status}
-                </span>
-              </div>
-              <p className="text-body-md text-on-surface">{b.message}</p>
-            </div>
-          ))}
+          {history.map((b) => {
+            const open = expandedId === b.id;
+            const long = b.message.length > 80;
+            return (
+              <button
+                key={b.id}
+                onClick={() => long && setExpandedId(open ? null : b.id)}
+                className={`rounded-xl bg-surface-container-lowest p-4 text-left shadow-ambient transition-colors ${
+                  long ? "hover:bg-surface-container-low" : "cursor-default"
+                }`}
+              >
+                <div className="mb-2 flex items-center justify-between">
+                  <span className="flex items-center gap-1.5 text-label-md text-on-surface-variant">
+                    <Users className="h-3.5 w-3.5" />
+                    {b.recipients.toLocaleString("en-IN")} · {b.date}
+                  </span>
+                  <span
+                    className={`flex items-center gap-1 rounded-full px-2 py-1 text-label-sm font-bold ${
+                      b.status === "DELIVERED"
+                        ? "bg-green-100 text-green-800"
+                        : b.status === "SENT"
+                          ? "bg-secondary-container text-on-secondary-container"
+                          : "bg-error-container text-on-error-container"
+                    }`}
+                  >
+                    <CheckCircle2 className="h-3 w-3" />
+                    {b.status}
+                  </span>
+                </div>
+                <p className="text-body-md text-on-surface">
+                  {open || !long ? b.message : `${b.message.slice(0, 80)}…`}
+                </p>
+                {long && (
+                  <span className="mt-1 inline-block text-label-md font-bold text-surface-tint">
+                    {open ? "Show less" : "Read more"}
+                  </span>
+                )}
+              </button>
+            );
+          })}
         </div>
       </section>
       </div>

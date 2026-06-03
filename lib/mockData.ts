@@ -264,7 +264,7 @@ export const broadcasts: Broadcast[] = [
   {
     id: "3",
     message:
-      "Wishing you a prosperous Diwali from Agamic Financial Services. Stay invested, stay secure.",
+      "Wishing you a prosperous Diwali from Darshak Desai Financial Services. Stay invested, stay secure.",
     recipients: 1200,
     date: "Oct 12",
     status: "DELIVERED",
@@ -287,6 +287,7 @@ export const broadcastAudiences: { key: string; label: string; count: number }[]
     { key: "gic", label: "GIC Only", count: 280 },
     { key: "mf", label: "MF Only", count: 510 },
     { key: "forex", label: "Forex Only", count: 120 },
+    { key: "stocks", label: "Stock Broking Only", count: 65 },
     { key: "champions", label: "Champions Only", count: 34 },
     { key: "prime", label: "Prime Only", count: 67 },
   ];
@@ -309,7 +310,7 @@ export const productMeta: Record<
   GIC: { label: "General Insurance (GIC)", pill: "bg-green-100 text-green-800", refLabel: "Policy" },
   MF: { label: "Mutual Funds (MF)", pill: "bg-amber-100 text-amber-800", refLabel: "Folio" },
   Forex: { label: "Forex", pill: "bg-purple-100 text-purple-800", refLabel: "Account" },
-  "Stock Broking": { label: "Stock Broking", pill: "bg-rose-100 text-rose-800", refLabel: "Demat" },
+  "Stock Broking": { label: "Stock Broking", pill: "bg-slate-200 text-slate-700", refLabel: "Demat" },
 };
 
 export const avatarTones: Record<Client["avatar"], string> = {
@@ -323,6 +324,11 @@ export const avatarTones: Record<Client["avatar"], string> = {
 
 export function getClient(id: string): Client | undefined {
   return clients.find((c) => c.id === id);
+}
+
+/** Clients referred by the named client (their downstream network). */
+export function getReferredClients(name: string): Client[] {
+  return clients.filter((c) => c.referredBy === name);
 }
 
 export function getInitials(name: string): string {

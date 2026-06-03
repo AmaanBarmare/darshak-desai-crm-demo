@@ -18,9 +18,11 @@ import {
   RefreshCw,
   LineChart,
   HeartPulse,
+  ChevronDown,
 } from "lucide-react";
 import {
   getClient,
+  getReferredClients,
   productMeta,
   products as allProducts,
   renewalUrgency,
@@ -47,9 +49,11 @@ export default function ClientProfilePage() {
   const client = getClient(id);
 
   const [taskOpen, setTaskOpen] = useState(false);
+  const [networkOpen, setNetworkOpen] = useState(false);
   const [activity, setActivity] = useState<ActivityItem[]>(
     client?.activity ?? [],
   );
+  const referred = getReferredClients(client?.name ?? "");
 
   if (!client) {
     return (
@@ -121,7 +125,7 @@ export default function ClientProfilePage() {
       <section className="mt-section-margin flex items-end justify-center gap-8">
         <WhatsAppButton
           phone={client.phone}
-          message={`Hello ${client.name.split(" ")[0]}, this is Darshak from Agamic Financial Services.`}
+          message={`Hello ${client.name.split(" ")[0]}, this is Darshak from Darshak Desai Financial Services.`}
           onSent={() => showToast("WhatsApp opened")}
           variant="ghost"
           label="WhatsApp"
@@ -256,8 +260,8 @@ export default function ClientProfilePage() {
         {/* Network */}
         <div className="rounded-xl bg-surface-container-lowest p-4 shadow-ambient">
           <SectionTitle icon={Users2}>Network</SectionTitle>
-          <div className="flex items-center justify-between rounded-lg border border-surface-variant bg-surface-container-low p-3">
-            <div>
+          <div className="flex items-stretch gap-2">
+            <div className="flex-1 rounded-lg border border-surface-variant bg-surface-container-low p-3">
               <p className="mb-1 text-label-sm uppercase tracking-widest text-on-surface-variant">
                 Referred By
               </p>
@@ -265,9 +269,19 @@ export default function ClientProfilePage() {
                 {client.referredBy ?? "Direct"}
               </p>
             </div>
-            <div className="text-right">
-              <p className="mb-1 text-label-sm uppercase tracking-widest text-on-surface-variant">
+            <button
+              onClick={() => referred.length && setNetworkOpen((v) => !v)}
+              className={`flex-1 rounded-lg border border-surface-variant bg-surface-container-low p-3 text-left transition-colors ${
+                referred.length ? "hover:bg-surface-variant/60" : "cursor-default"
+              }`}
+            >
+              <p className="mb-1 flex items-center justify-between text-label-sm uppercase tracking-widest text-on-surface-variant">
                 Has Referred
+                {referred.length > 0 && (
+                  <ChevronDown
+                    className={`h-3.5 w-3.5 transition-transform ${networkOpen ? "rotate-180" : ""}`}
+                  />
+                )}
               </p>
               <p className="text-body-md text-on-surface">
                 <span className="text-[18px] font-bold text-primary">
@@ -275,8 +289,30 @@ export default function ClientProfilePage() {
                 </span>{" "}
                 Clients
               </p>
-            </div>
+            </button>
           </div>
+
+          {networkOpen && referred.length > 0 && (
+            <div className="mt-2 flex flex-col gap-1 border-t border-surface-variant pt-2">
+              {referred.map((r) => (
+                <Link
+                  key={r.id}
+                  href={`/clients/${r.id}`}
+                  className="flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-surface-container-low"
+                >
+                  <Avatar client={r} size="sm" />
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-body-md font-semibold text-on-surface">
+                      {r.name}
+                    </p>
+                    <p className="text-label-sm text-on-surface-variant">
+                      {r.city} · {r.products.join(", ")}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 

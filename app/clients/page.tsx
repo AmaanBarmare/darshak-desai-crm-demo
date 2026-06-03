@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
-import { Search, History, Phone, Star } from "lucide-react";
+import { Search, History, Phone, Star, Upload } from "lucide-react";
 import { clients, championStats, getChampions } from "@/lib/mockData";
 import type { Product } from "@/lib/types";
 import {
@@ -22,9 +22,12 @@ const FILTERS: Filter[] = [
   "GIC",
   "MF",
   "Forex",
+  "Stock Broking",
   "Champion",
   "Prime",
 ];
+
+const filterLabel = (f: Filter) => (f === "Stock Broking" ? "Stocks" : f);
 
 export default function ClientsPage() {
   const [query, setQuery] = useState("");
@@ -32,9 +35,10 @@ export default function ClientsPage() {
 
   const filtered = useMemo(() => {
     return clients.filter((c) => {
-      const matchesQuery = c.name
-        .toLowerCase()
-        .includes(query.trim().toLowerCase());
+      const q = query.trim().toLowerCase();
+      const matchesQuery =
+        c.name.toLowerCase().includes(q) ||
+        c.phone.replace(/\s/g, "").includes(q.replace(/\s/g, ""));
       const matchesFilter =
         filter === "All"
           ? true
@@ -54,13 +58,21 @@ export default function ClientsPage() {
       <MobileTopBar />
 
       <div className="mb-5">
-        <h1 className="mb-4 text-display-lg text-on-background">Clients</h1>
+        <div className="mb-4 flex items-center justify-between gap-3">
+          <h1 className="text-display-lg text-on-background">Clients</h1>
+          <Link
+            href="/clients/import"
+            className="flex flex-shrink-0 items-center gap-1.5 rounded-lg border border-outline-variant bg-surface-container-lowest px-3 py-2 text-label-md font-bold text-primary shadow-ambient transition-colors hover:bg-secondary-container/40 active:scale-[0.98]"
+          >
+            <Upload className="h-4 w-4" /> Import
+          </Link>
+        </div>
         <div className="group relative md:max-w-xl">
           <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-outline transition-colors group-focus-within:text-primary" />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search clients..."
+            placeholder="Search by name or phone..."
             className="h-12 w-full rounded-lg border border-outline-variant bg-surface-container-lowest pl-12 pr-4 text-body-lg shadow-ambient outline-none transition-all placeholder:text-outline focus:border-2 focus:border-primary"
           />
         </div>
@@ -87,7 +99,7 @@ export default function ClientsPage() {
                   strokeWidth={active ? 0 : 2}
                 />
               )}
-              {f}
+              {filterLabel(f)}
             </button>
           );
         })}

@@ -33,10 +33,10 @@ function greeting(hour: number): string {
 }
 
 const KPIS = [
-  { label: "Total Clients", value: "1,200", icon: Users },
-  { label: "Renewals This Month", value: "45", icon: RefreshCw },
-  { label: "Birthdays This Week", value: "12", icon: Cake },
-  { label: "Pending Tasks", value: "8", icon: ClipboardCheck },
+  { label: "Total Clients", value: "1,200", icon: Users, tone: "bg-secondary-container text-primary" },
+  { label: "Renewals This Month", value: "45", icon: RefreshCw, tone: "bg-amber-100 text-amber-700" },
+  { label: "Birthdays This Week", value: "12", icon: Cake, tone: "bg-tertiary-fixed text-on-tertiary-fixed-variant" },
+  { label: "Pending Tasks", value: "8", icon: ClipboardCheck, tone: "bg-blue-100 text-blue-700" },
 ];
 
 export default function DashboardPage() {
@@ -93,19 +93,25 @@ export default function DashboardPage() {
           return (
             <div
               key={kpi.label}
-              className="flex aspect-[4/3] min-w-0 flex-col justify-between rounded-xl border border-surface-variant/50 bg-surface-container-lowest p-3 shadow-ambient md:aspect-auto md:min-h-[124px] md:p-4"
+              className="flex aspect-[4/3] min-w-0 flex-col justify-between rounded-xl bg-surface-container-lowest p-3 shadow-ambient transition-shadow hover:shadow-lift md:aspect-auto md:min-h-[128px] md:p-4"
             >
-              <div className="flex items-start gap-2 text-on-surface-variant">
-                <Icon className="h-[18px] w-[18px] flex-shrink-0" />
-                <span className="text-label-md leading-tight">{kpi.label}</span>
+              <span
+                className={`flex h-9 w-9 items-center justify-center rounded-lg ${kpi.tone}`}
+              >
+                <Icon className="h-[18px] w-[18px]" />
+              </span>
+              <div>
+                {loading ? (
+                  <div className="skeleton h-9 w-16 rounded-lg" />
+                ) : (
+                  <div className="text-display-lg leading-none text-primary">
+                    {kpi.value}
+                  </div>
+                )}
+                <span className="mt-1.5 block text-label-md leading-tight text-on-surface-variant">
+                  {kpi.label}
+                </span>
               </div>
-              {loading ? (
-                <div className="skeleton mt-2 h-9 w-16 rounded-lg" />
-              ) : (
-                <div className="mt-2 text-display-lg text-primary">
-                  {kpi.value}
-                </div>
-              )}
             </div>
           );
         })}
@@ -195,7 +201,7 @@ export default function DashboardPage() {
               </div>
               <WhatsAppButton
                 phone={c.phone}
-                message={`Happy Birthday, ${c.name.split(" ")[0]}! Wishing you a wonderful year ahead from all of us at Agamic Financial Services.`}
+                message={`Happy Birthday, ${c.name.split(" ")[0]}! Wishing you a wonderful year ahead from all of us at Darshak Desai Financial Services.`}
                 onSent={() => showToast("WhatsApp birthday wish opened")}
                 variant="solid"
                 label="Send WhatsApp Wish"

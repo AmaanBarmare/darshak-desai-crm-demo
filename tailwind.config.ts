@@ -10,8 +10,8 @@ const config: Config = {
     extend: {
       colors: {
         // Stitch Material-3 token palette (verbatim from the design exports)
-        surface: "#f9f9fe",
-        background: "#f9f9fe",
+        surface: "#fbfbfe",
+        background: "#eceff5",
         error: "#ba1a1a",
         "primary-fixed-dim": "#a7c8ff",
         "on-secondary-container": "#54647a",
@@ -91,9 +91,10 @@ const config: Config = {
         ],
       },
       boxShadow: {
-        ambient: "0 4px 12px rgba(0, 0, 0, 0.04)",
-        fab: "0 8px 20px rgba(0, 30, 64, 0.25)",
-        lift: "0 8px 20px rgba(0, 30, 64, 0.08)",
+        ambient:
+          "0 1px 2px rgba(16, 24, 40, 0.04), 0 4px 16px rgba(16, 24, 40, 0.06)",
+        fab: "0 10px 24px rgba(0, 30, 64, 0.28)",
+        lift: "0 10px 28px rgba(0, 30, 64, 0.12)",
       },
       keyframes: {
         "fade-in": {

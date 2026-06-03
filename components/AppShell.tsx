@@ -22,7 +22,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-background">
       {/* Desktop sidebar */}
-      <aside className="fixed left-0 top-0 z-40 hidden h-full w-64 flex-col border-r border-outline-variant/40 bg-surface-container-low px-4 py-6 md:flex">
+      <aside className="fixed left-0 top-0 z-40 hidden h-full w-64 flex-col border-r border-outline-variant/40 bg-surface-container-lowest px-4 py-6 md:flex">
         <div className="flex items-center gap-3 px-2 pb-8">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-on-primary">
             <span className="text-headline-sm font-bold">DD</span>
@@ -60,11 +60,11 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </nav>
 
         <div className="mt-4 rounded-xl bg-surface-container px-4 py-3">
-          <p className="text-label-md uppercase tracking-wider text-on-surface-variant">
-            Agamic Financial
+          <p className="text-body-md font-semibold text-on-surface">
+            Darshak Desai
           </p>
-          <p className="mt-0.5 text-body-md font-medium text-on-surface">
-            Darshak Desai · Admin
+          <p className="mt-0.5 text-label-md uppercase tracking-wider text-on-surface-variant">
+            Admin
           </p>
         </div>
       </aside>

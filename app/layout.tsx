@@ -14,7 +14,7 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   title: "Darshak Desai CRM",
   description:
-    "Client relationship management for Darshak Desai, Agamic Financial Services.",
+    "Client relationship management for Darshak Desai Financial Services.",
 };
 
 export const viewport: Viewport = {

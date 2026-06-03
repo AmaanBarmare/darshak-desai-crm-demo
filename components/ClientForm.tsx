@@ -39,7 +39,7 @@ export function ClientForm({ existing }: { existing?: Client }) {
   const [name, setName] = useState(existing?.name ?? "");
   const [phone, setPhone] = useState(existing?.phone ?? "");
   const [dob, setDob] = useState("");
-  const [gender, setGender] = useState(existing?.gender ?? "");
+  const [gender, setGender] = useState<string>(existing?.gender ?? "");
   const [city, setCity] = useState(existing?.city ?? "");
   const [notes, setNotes] = useState("");
 
@@ -142,12 +142,13 @@ export function ClientForm({ existing }: { existing?: Client }) {
               <Field label="Gender">
                 <select
                   value={gender}
-                  onChange={(e) => setGender(e.target.value as Client["gender"])}
+                  onChange={(e) => setGender(e.target.value)}
                   className={inputClass}
                 >
                   <option value="">Select</option>
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
+                  <option value="Other">Other</option>
                 </select>
               </Field>
             </div>
@@ -186,30 +187,42 @@ export function ClientForm({ existing }: { existing?: Client }) {
                     label={`Toggle ${product}`}
                   />
                 </div>
-                {state.enabled && (
-                  <div className="mt-3 grid grid-cols-2 gap-3 border-t border-surface-variant pt-3">
-                    <Field label="Renewal Date">
-                      <input
-                        type="date"
-                        value={state.renewal}
-                        onChange={(e) =>
-                          setProduct(product, { renewal: e.target.value })
-                        }
-                        className={inputClass}
-                      />
-                    </Field>
-                    <Field label={`${productMeta[product].refLabel} Ref`}>
-                      <input
-                        value={state.ref}
-                        onChange={(e) =>
-                          setProduct(product, { ref: e.target.value })
-                        }
-                        placeholder="e.g. LIC12345"
-                        className={inputClass}
-                      />
-                    </Field>
-                  </div>
-                )}
+                {state.enabled &&
+                  (() => {
+                    // Forex and Stock Broking have no fixed renewal date.
+                    const hasRenewal =
+                      product !== "Forex" && product !== "Stock Broking";
+                    return (
+                      <div
+                        className={`mt-3 grid gap-3 border-t border-surface-variant pt-3 ${
+                          hasRenewal ? "grid-cols-2" : "grid-cols-1"
+                        }`}
+                      >
+                        {hasRenewal && (
+                          <Field label="Renewal Date">
+                            <input
+                              type="date"
+                              value={state.renewal}
+                              onChange={(e) =>
+                                setProduct(product, { renewal: e.target.value })
+                              }
+                              className={inputClass}
+                            />
+                          </Field>
+                        )}
+                        <Field label={`${productMeta[product].refLabel} Ref`}>
+                          <input
+                            value={state.ref}
+                            onChange={(e) =>
+                              setProduct(product, { ref: e.target.value })
+                            }
+                            placeholder="e.g. LIC12345"
+                            className={inputClass}
+                          />
+                        </Field>
+                      </div>
+                    );
+                  })()}
               </div>
             );
           })}
