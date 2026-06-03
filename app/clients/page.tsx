@@ -55,7 +55,7 @@ export default function ClientsPage() {
 
       <div className="mb-5">
         <h1 className="mb-4 text-display-lg text-on-background">Clients</h1>
-        <div className="group relative">
+        <div className="group relative md:max-w-xl">
           <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-outline transition-colors group-focus-within:text-primary" />
           <input
             value={query}
@@ -96,7 +96,7 @@ export default function ClientsPage() {
       {/* Champions leaderboard (shown when Champion filter is active) */}
       {filter === "Champion" && (
         <section className="mb-5">
-          <div className="mb-3 grid grid-cols-2 gap-card-gap">
+          <div className="mb-3 grid grid-cols-2 gap-card-gap md:max-w-xl">
             <div className="flex flex-col gap-1 rounded-xl border border-outline-variant/30 bg-surface-container-lowest p-3 shadow-ambient">
               <span className="text-label-md text-on-surface-variant">
                 Total Referrals (YTD)
@@ -126,19 +126,20 @@ export default function ClientsPage() {
           </div>
 
           <h2 className="mb-3 text-headline-sm text-primary">Top Referrers</h2>
-          <div className="flex flex-col gap-card-gap">
+          <div className="flex flex-col gap-card-gap md:grid md:grid-cols-2 xl:grid-cols-3">
             {champions.map((c, i) => (
               <Link
                 key={c.id}
                 href={`/clients/${c.id}`}
-                className="relative flex items-center gap-3 overflow-hidden rounded-xl border border-outline-variant/30 bg-surface-container-lowest p-3 shadow-ambient transition-shadow hover:shadow-lift"
+                className="flex items-center gap-3 rounded-xl border border-outline-variant/30 bg-surface-container-lowest p-3 shadow-ambient transition-shadow hover:shadow-lift"
               >
                 <span
-                  className={`absolute bottom-0 left-0 top-0 w-1 ${
-                    i === 0 ? "bg-tertiary-container" : "bg-surface-variant"
+                  className={`flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full text-label-md font-bold ${
+                    i === 0
+                      ? "bg-tertiary-fixed text-on-tertiary-fixed-variant"
+                      : "bg-surface-container text-on-surface-variant"
                   }`}
-                />
-                <span className="ml-1 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-surface-container text-label-md font-bold text-on-surface-variant">
+                >
                   {i + 1}
                 </span>
                 <Avatar client={c} />
@@ -168,7 +169,7 @@ export default function ClientsPage() {
       )}
 
       {/* Client cards */}
-      <div className="flex flex-col gap-card-gap">
+      <div className="flex flex-col gap-card-gap md:grid md:grid-cols-2 xl:grid-cols-3">
         {filtered.map((c) => (
           <Link
             key={c.id}
@@ -211,7 +212,7 @@ export default function ClientsPage() {
         ))}
 
         {filtered.length === 0 && (
-          <div className="rounded-xl border border-dashed border-outline-variant bg-surface-container-lowest p-8 text-center">
+          <div className="rounded-xl border border-dashed border-outline-variant bg-surface-container-lowest p-8 text-center md:col-span-full">
             <p className="text-body-lg font-semibold text-on-surface">
               No clients found
             </p>

@@ -76,7 +76,7 @@ export default function ClientProfilePage() {
   }
 
   return (
-    <div className="-mt-4">
+    <div className="-mt-4 md:mx-auto md:max-w-4xl">
       {/* Header */}
       <header className="sticky top-0 z-30 -mx-container-padding flex h-touch-target items-center justify-between bg-background/90 px-container-padding backdrop-blur-md">
         <button
@@ -146,7 +146,7 @@ export default function ClientProfilePage() {
         </button>
       </section>
 
-      <div className="mt-section-margin flex flex-col gap-base">
+      <div className="mt-section-margin flex flex-col gap-base md:block md:columns-2 md:gap-base md:[&>div]:mb-3 md:[&>div]:break-inside-avoid">
         {/* Phone + DOB */}
         <div className="rounded-xl bg-surface-container-lowest p-4 shadow-ambient">
           <div className="grid grid-cols-2 gap-4">

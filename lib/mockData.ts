@@ -51,7 +51,7 @@ export const clients: Client[] = [
       MF: { ref: "MF3344", renewal: "Sep 12", renewalDays: 101 },
     },
     activity: [
-      { text: "Birthday today — WhatsApp wish sent", time: "Today" },
+      { text: "Birthday today: WhatsApp wish sent", time: "Today" },
       { text: "Renewal reminder sent", time: "3 days ago" },
     ],
   },
@@ -248,7 +248,7 @@ export const broadcasts: Broadcast[] = [
   {
     id: "1",
     message:
-      "Monthly Market Update — November edition is here. Key highlights inside.",
+      "Monthly Market Update: November edition is here. Key highlights inside.",
     recipients: 1200,
     date: "Oct 25",
     status: "DELIVERED",
@@ -256,7 +256,7 @@ export const broadcasts: Broadcast[] = [
   {
     id: "2",
     message:
-      "LIC Renewal Reminder — Your policy is due for renewal. Please get in touch.",
+      "LIC Renewal Reminder: Your policy is due for renewal. Please get in touch.",
     recipients: 45,
     date: "Oct 20",
     status: "DELIVERED",

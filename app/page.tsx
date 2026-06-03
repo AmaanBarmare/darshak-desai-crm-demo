@@ -87,13 +87,13 @@ export default function DashboardPage() {
       </section>
 
       {/* KPI grid */}
-      <section className="mb-section-margin grid grid-cols-2 gap-card-gap">
+      <section className="mb-section-margin grid grid-cols-2 gap-card-gap md:grid-cols-4">
         {KPIS.map((kpi) => {
           const Icon = kpi.icon;
           return (
             <div
               key={kpi.label}
-              className="flex aspect-[4/3] min-w-0 flex-col justify-between rounded-xl border border-surface-variant/50 bg-surface-container-lowest p-3 shadow-ambient"
+              className="flex aspect-[4/3] min-w-0 flex-col justify-between rounded-xl border border-surface-variant/50 bg-surface-container-lowest p-3 shadow-ambient md:aspect-auto md:min-h-[124px] md:p-4"
             >
               <div className="flex items-start gap-2 text-on-surface-variant">
                 <Icon className="h-[18px] w-[18px] flex-shrink-0" />
@@ -111,8 +111,12 @@ export default function DashboardPage() {
         })}
       </section>
 
+      {/* Desktop: two-pane region. Renewals + Tasks fill the left two columns,
+          Birthdays occupies the right column. DOM order is preserved so mobile
+          stacks Renewals → Birthdays → Tasks exactly as before. */}
+      <div className="md:grid md:grid-cols-3 md:items-start md:gap-6">
       {/* Upcoming Renewals */}
-      <section className="mb-section-margin">
+      <section className="mb-section-margin md:col-span-2 md:col-start-1 md:row-start-1 md:mb-0">
         <div className="mb-3 flex items-center justify-between">
           <h2 className="text-headline-sm text-primary">Upcoming Renewals</h2>
           <Link
@@ -122,7 +126,7 @@ export default function DashboardPage() {
             View All
           </Link>
         </div>
-        <div className="flex flex-col gap-card-gap">
+        <div className="flex flex-col gap-card-gap md:grid md:grid-cols-2">
           {renewals.map((r) => {
             const urgency = renewalUrgency(r.renewalDays);
             return (
@@ -164,15 +168,15 @@ export default function DashboardPage() {
       </section>
 
       {/* Birthdays This Week */}
-      <section className="mb-section-margin">
+      <section className="mb-section-margin md:col-start-3 md:row-span-2 md:row-start-1 md:mb-0">
         <h2 className="mb-3 text-headline-sm text-primary">
           Birthdays This Week
         </h2>
-        <div className="no-scrollbar -mx-container-padding flex snap-x snap-mandatory gap-card-gap overflow-x-auto px-container-padding pb-2">
+        <div className="no-scrollbar -mx-container-padding flex snap-x snap-mandatory gap-card-gap overflow-x-auto px-container-padding pb-2 md:mx-0 md:flex-col md:overflow-visible md:px-0 md:pb-0">
           {birthdays.map((c) => (
             <div
               key={c.id}
-              className="flex min-w-[230px] snap-start flex-col justify-between gap-3 rounded-xl border border-surface-variant/50 bg-surface-container-lowest p-3 shadow-ambient"
+              className="flex min-w-[230px] snap-start flex-col justify-between gap-3 rounded-xl border border-surface-variant/50 bg-surface-container-lowest p-3 shadow-ambient md:w-full md:min-w-0"
             >
               <div className="flex items-center gap-3">
                 <div
@@ -202,7 +206,7 @@ export default function DashboardPage() {
       </section>
 
       {/* Today's Tasks */}
-      <section className="mb-4">
+      <section className="mb-4 md:col-span-2 md:col-start-1 md:row-start-2 md:mb-0">
         <h2 className="mb-3 text-headline-sm text-primary">Today&apos;s Tasks</h2>
         <div className="divide-y divide-surface-variant/50 overflow-hidden rounded-xl border border-surface-variant/50 bg-surface-container-lowest shadow-ambient">
           {todaysTasks.map((task) => {
@@ -254,6 +258,7 @@ export default function DashboardPage() {
           })}
         </div>
       </section>
+      </div>
 
       <Fab href="/clients/new" label="Add Client" />
     </div>

@@ -94,7 +94,7 @@ export function ClientForm({ existing }: { existing?: Client }) {
   }
 
   return (
-    <div className="-mt-4 pb-28">
+    <div className="-mt-4 pb-28 md:mx-auto md:max-w-3xl">
       {/* Header */}
       <header className="sticky top-0 z-30 -mx-container-padding mb-4 flex h-touch-target items-center gap-3 border-b border-outline-variant/40 bg-background/90 px-container-padding backdrop-blur-md">
         <button
@@ -165,7 +165,7 @@ export function ClientForm({ existing }: { existing?: Client }) {
 
       {/* Product Portfolio */}
       <Section title="Product Portfolio" hint="Toggle active holdings">
-        <div className="flex flex-col gap-card-gap">
+        <div className="flex flex-col gap-card-gap md:grid md:grid-cols-2 md:items-start">
           {PORTFOLIO.map(({ product, icon: Icon }) => {
             const state = portfolio[product];
             return (
@@ -270,7 +270,7 @@ export function ClientForm({ existing }: { existing?: Client }) {
 
       {/* Save bar */}
       <div className="pb-safe fixed bottom-0 left-0 z-40 w-full border-t border-outline-variant/40 bg-surface/95 px-container-padding py-3 backdrop-blur-md md:pl-64">
-        <div className="mx-auto max-w-[480px]">
+        <div className="mx-auto max-w-3xl">
           <button
             onClick={save}
             className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3.5 text-body-lg font-bold text-on-primary transition-colors hover:bg-primary-container active:scale-[0.99]"

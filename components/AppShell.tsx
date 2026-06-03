@@ -71,7 +71,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
 
       {/* Main column */}
       <div className="md:pl-64">
-        <main className="mx-auto w-full max-w-[480px] px-container-padding pb-28 pt-4 md:pb-12 md:pt-8">
+        <main className="mx-auto w-full max-w-6xl px-container-padding pb-28 pt-4 md:pb-12 md:pt-8">
           <AnimatePresence mode="wait">
             <motion.div
               key={pathname}

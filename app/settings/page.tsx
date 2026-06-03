@@ -30,7 +30,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div>
+    <div className="md:mx-auto md:max-w-4xl">
       <MobileTopBar />
       <PageHeading title="Settings" />
 
@@ -52,6 +52,8 @@ export default function SettingsPage() {
         </div>
       </section>
 
+      {/* Section groups tile into two masonry columns on desktop */}
+      <div className="md:columns-2 md:gap-6 md:[&>section]:break-inside-avoid">
       {/* Integrations */}
       <Group title="Integrations">
         <Row
@@ -136,6 +138,7 @@ export default function SettingsPage() {
           <ChevronRight className="h-4 w-4 text-outline" />
         </button>
       </Group>
+      </div>
 
       {/* Logout */}
       <button

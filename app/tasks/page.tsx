@@ -53,7 +53,7 @@ export default function TasksPage() {
   }
 
   return (
-    <div>
+    <div className="md:mx-auto md:max-w-4xl">
       <MobileTopBar />
       <PageHeading title="Tasks" subtitle="Manage your client follow-ups" />
 
@@ -78,7 +78,7 @@ export default function TasksPage() {
       </div>
 
       {/* Task list */}
-      <div className="flex flex-col gap-card-gap">
+      <div className="flex flex-col gap-card-gap md:grid md:grid-cols-2 md:items-start">
         {visible.map((t) => {
           const isDone = !!done[t.id];
           return (
@@ -128,7 +128,7 @@ export default function TasksPage() {
         })}
 
         {visible.length === 0 && (
-          <div className="rounded-xl border border-dashed border-outline-variant bg-surface-container-lowest p-8 text-center">
+          <div className="rounded-xl border border-dashed border-outline-variant bg-surface-container-lowest p-8 text-center md:col-span-full">
             <p className="text-body-lg font-semibold text-on-surface">
               No tasks here
             </p>

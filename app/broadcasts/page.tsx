@@ -41,7 +41,8 @@ export default function BroadcastsPage() {
         subtitle="Send updates to your client base"
       />
 
-      <div className="mb-section-margin rounded-xl bg-surface-container-lowest p-4 shadow-ambient">
+      <div className="md:grid md:grid-cols-2 md:items-start md:gap-6">
+      <div className="mb-section-margin rounded-xl bg-surface-container-lowest p-4 shadow-ambient md:mb-0 md:sticky md:top-8">
         {/* Audience */}
         <label className="mb-1.5 block text-label-md uppercase tracking-wider text-on-surface-variant">
           Send To
@@ -129,6 +130,7 @@ export default function BroadcastsPage() {
           ))}
         </div>
       </section>
+      </div>
     </div>
   );
 }
