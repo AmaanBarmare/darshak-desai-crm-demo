@@ -1,0 +1,115 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./app/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./lib/**/*.{ts,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        // Stitch Material-3 token palette (verbatim from the design exports)
+        surface: "#f9f9fe",
+        background: "#f9f9fe",
+        error: "#ba1a1a",
+        "primary-fixed-dim": "#a7c8ff",
+        "on-secondary-container": "#54647a",
+        "on-surface-variant": "#43474f",
+        "on-secondary": "#ffffff",
+        "on-tertiary-fixed": "#341100",
+        "surface-container-high": "#e8e8ed",
+        "on-primary": "#ffffff",
+        "tertiary-fixed-dim": "#ffb690",
+        "surface-container-low": "#f4f3f8",
+        "inverse-primary": "#a7c8ff",
+        "tertiary-fixed": "#ffdbca",
+        "tertiary-container": "#592300",
+        "on-primary-fixed": "#001b3c",
+        "inverse-on-surface": "#f1f0f5",
+        "primary-container": "#003366",
+        "surface-tint": "#3a5f94",
+        "on-error": "#ffffff",
+        "on-primary-container": "#799dd6",
+        "inverse-surface": "#2f3034",
+        outline: "#737780",
+        "surface-container": "#eeedf2",
+        "on-secondary-fixed": "#0b1c30",
+        "outline-variant": "#c3c6d1",
+        "on-tertiary-container": "#d8885c",
+        "error-container": "#ffdad6",
+        "surface-dim": "#dad9de",
+        "on-tertiary": "#ffffff",
+        tertiary: "#381300",
+        "on-secondary-fixed-variant": "#38485d",
+        secondary: "#505f76",
+        "secondary-container": "#d0e1fb",
+        "secondary-fixed": "#d3e4fe",
+        "on-surface": "#1a1c1f",
+        "primary-fixed": "#d5e3ff",
+        "surface-variant": "#e2e2e7",
+        "on-primary-fixed-variant": "#1f477b",
+        "surface-bright": "#f9f9fe",
+        "secondary-fixed-dim": "#b7c8e1",
+        primary: "#001e40",
+        "on-tertiary-fixed-variant": "#723610",
+        "surface-container-lowest": "#ffffff",
+        "on-background": "#1a1c1f",
+        "surface-container-highest": "#e2e2e7",
+        "on-error-container": "#93000a",
+      },
+      borderRadius: {
+        DEFAULT: "0.25rem",
+        lg: "0.5rem",
+        xl: "0.75rem",
+        "2xl": "1rem",
+        full: "9999px",
+      },
+      spacing: {
+        base: "8px",
+        "touch-target": "48px",
+        "section-margin": "24px",
+        "card-gap": "12px",
+        "container-padding": "16px",
+      },
+      fontFamily: {
+        sans: ["var(--font-manrope)", "Manrope", "sans-serif"],
+      },
+      fontSize: {
+        "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+        "label-sm": ["10px", { lineHeight: "12px", fontWeight: "700" }],
+        "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+        "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+        "display-lg": [
+          "32px",
+          { lineHeight: "40px", letterSpacing: "-0.02em", fontWeight: "700" },
+        ],
+        "body-lg": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+        "label-md": [
+          "12px",
+          { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" },
+        ],
+      },
+      boxShadow: {
+        ambient: "0 4px 12px rgba(0, 0, 0, 0.04)",
+        fab: "0 8px 20px rgba(0, 30, 64, 0.25)",
+        lift: "0 8px 20px rgba(0, 30, 64, 0.08)",
+      },
+      keyframes: {
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
+        shimmer: {
+          "100%": { transform: "translateX(100%)" },
+        },
+      },
+      animation: {
+        "fade-in": "fade-in 0.2s ease-out",
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;

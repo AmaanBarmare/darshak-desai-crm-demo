@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Darshak Desai CRM - Clients</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface": "#f9f9fe",
+                      "background": "#f9f9fe",
+                      "error": "#ba1a1a",
+                      "primary-fixed-dim": "#a7c8ff",
+                      "on-secondary-container": "#54647a",
+                      "on-surface-variant": "#43474f",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed": "#341100",
+                      "surface-container-high": "#e8e8ed",
+                      "on-primary": "#ffffff",
+                      "tertiary-fixed-dim": "#ffb690",
+                      "surface-container-low": "#f4f3f8",
+                      "inverse-primary": "#a7c8ff",
+                      "tertiary-fixed": "#ffdbca",
+                      "tertiary-container": "#592300",
+                      "on-primary-fixed": "#001b3c",
+                      "inverse-on-surface": "#f1f0f5",
+                      "primary-container": "#003366",
+                      "surface-tint": "#3a5f94",
+                      "on-error": "#ffffff",
+                      "on-primary-container": "#799dd6",
+                      "inverse-surface": "#2f3034",
+                      "outline": "#737780",
+                      "surface-container": "#eeedf2",
+                      "on-secondary-fixed": "#0b1c30",
+                      "outline-variant": "#c3c6d1",
+                      "on-tertiary-container": "#d8885c",
+                      "error-container": "#ffdad6",
+                      "surface-dim": "#dad9de",
+                      "on-tertiary": "#ffffff",
+                      "tertiary": "#381300",
+                      "on-secondary-fixed-variant": "#38485d",
+                      "secondary": "#505f76",
+                      "secondary-container": "#d0e1fb",
+                      "secondary-fixed": "#d3e4fe",
+                      "on-surface": "#1a1c1f",
+                      "primary-fixed": "#d5e3ff",
+                      "surface-variant": "#e2e2e7",
+                      "on-primary-fixed-variant": "#1f477b",
+                      "surface-bright": "#f9f9fe",
+                      "secondary-fixed-dim": "#b7c8e1",
+                      "primary": "#001e40",
+                      "on-tertiary-fixed-variant": "#723610",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#1a1c1f",
+                      "surface-container-highest": "#e2e2e7",
+                      "on-error-container": "#93000a"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "touch-target": "48px",
+                      "section-margin": "24px",
+                      "card-gap": "12px",
+                      "container-padding": "16px"
+              },
+              "fontFamily": {
+                      "body-md": ["Manrope"],
+                      "label-sm": ["Manrope"],
+                      "headline-md": ["Manrope"],
+                      "headline-sm": ["Manrope"],
+                      "display-lg": ["Manrope"],
+                      "body-lg": ["Manrope"],
+                      "label-md": ["Manrope"]
+              },
+              "fontSize": {
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "label-sm": ["10px", {"lineHeight": "12px", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "display-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24 md:pb-0 md:pl-80 selection:bg-primary/20">
+<!-- Mobile Top App Bar (From Shared Components) -->
+<header class="md:hidden w-full top-0 sticky z-40 bg-surface text-primary font-headline-sm flex items-center justify-between px-container-padding h-touch-target shadow-sm">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-variant flex-shrink-0">
+<img alt="Advisor Profile Image" class="w-full h-full object-cover" data-alt="Professional headshot of an Indian financial advisor in his 40s. He is wearing a tailored navy blue suit and a crisp white shirt. The background is a brightly lit, modern glass-walled office with subtle indoor plants. The lighting is soft and natural, conveying trust and premium institutional reliability. High resolution, clear focus on the face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCnbt96_d2ve4Pi_LGeDDaLlnuaWEZ4mPEop7_uWJX5dXqAe2z0r3s0c_Bjv_BCXJ4xotm4hAwBS9UEOjgFmpbfuhQbGnKKplclNb26ol-vFAhMfpIVq0ujQA8YFj9woMaiYBDK8zh1r86PnQfeqaOwB01_z4rulNBqAZlUGbD00BUFU4IXsdpSBiJcIEKWSjUEPW95yb3CdImIcVAXn1BMw2afshf_cRfpUZwkrUGRCax79CnUJkpHXLMiXGElJQXzs2l8kwLgs6E"/>
+</div>
+<span class="font-headline-md text-primary font-bold">Darshak Desai CRM</span>
+</div>
+<button class="w-touch-target h-touch-target flex items-center justify-center rounded-full hover:bg-surface-variant/50 transition-colors active:scale-95 duration-200 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</header>
+<!-- Desktop Navigation Drawer (From Shared Components) -->
+<aside class="hidden md:flex flex-col py-4 gap-2 bg-surface-container-low h-full w-80 rounded-r-xl shadow-xl fixed left-0 top-0 z-50">
+<div class="px-6 py-4 mb-4 flex items-center gap-4">
+<img alt="Advisor Profile" class="w-12 h-12 rounded-full object-cover shadow-sm" data-alt="Professional headshot of an Indian financial advisor in his 40s. He is wearing a tailored navy blue suit and a crisp white shirt. The background is a brightly lit, modern glass-walled office with subtle indoor plants. The lighting is soft and natural, conveying trust and premium institutional reliability. High resolution, clear focus on the face." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcNd4RgsqaPjAU-M4RkOm7xyPvgDdnV6xF1clLUeBgs3BncxhEatea9ugPjMps_MrfUPwd_BuK0wPNEdYNguf6oH_FeHakqIKv7hD2KlV4VOFuaLJMQogxvgPMutwIIMA2b3tuLdhazJmJf5wy0gvSzspJj1VUAJJ7o5UnftIClwrEmeFgB5mbWRmAhlGQcQN3bHObBvlAm1nwrX_E6Ig_0PC_wobmUuLTxFPOQPspE_af42lfU8_t_8Kynyp_uofvv_mwj4xjCkI"/>
+<div>
+<h2 class="font-headline-sm text-primary font-bold">Advisor Pro</h2>
+<p class="font-body-md text-on-surface-variant">Wealth Management</p>
+<p class="font-label-sm text-outline mt-1">v2.4.0</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1 px-2">
+<a class="flex items-center gap-3 px-4 h-touch-target text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 font-body-lg hover:bg-surface-variant/50 transition-colors active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="calculate">calculate</span>
+                Premium Calculator
+            </a>
+<a class="flex items-center gap-3 px-4 h-touch-target text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 font-body-lg hover:bg-surface-variant/50 transition-colors active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+                Portfolio Review
+            </a>
+<a class="flex items-center gap-3 px-4 h-touch-target text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 font-body-lg hover:bg-surface-variant/50 transition-colors active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="verified_user">verified_user</span>
+                Compliance Docs
+            </a>
+<a class="flex items-center gap-3 px-4 h-touch-target text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 font-body-lg hover:bg-surface-variant/50 transition-colors active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+                Support
+            </a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="max-w-3xl mx-auto w-full px-container-padding py-section-margin md:py-8">
+<!-- Header & Search -->
+<div class="mb-section-margin sticky top-[48px] md:top-0 z-30 bg-background/90 backdrop-blur-md pb-4 pt-2 -mx-container-padding px-container-padding">
+<h1 class="font-display-lg text-on-background mb-4">Clients</h1>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full h-12 pl-12 pr-4 bg-surface rounded-lg border border-outline-variant focus:border-2 focus:border-primary focus:ring-0 outline-none transition-all font-body-lg placeholder:text-outline shadow-sm" placeholder="Search clients..." type="text"/>
+</div>
+</div>
+<!-- Filter Chips (Horizontal Scroller) -->
+<div class="flex overflow-x-auto gap-2 mb-section-margin pb-3 -mx-container-padding px-container-padding">
+<button class="flex-shrink-0 h-8 px-4 rounded-full bg-primary text-on-primary font-label-md flex items-center justify-center transition-all shadow-sm">All</button>
+<button class="flex-shrink-0 h-8 px-4 rounded-full bg-surface-variant text-on-surface-variant font-label-md flex items-center justify-center hover:bg-surface-dim transition-all">LIC</button>
+<button class="flex-shrink-0 h-8 px-4 rounded-full bg-surface-variant text-on-surface-variant font-label-md flex items-center justify-center hover:bg-surface-dim transition-all">GIC</button>
+<button class="flex-shrink-0 h-8 px-4 rounded-full bg-surface-variant text-on-surface-variant font-label-md flex items-center justify-center hover:bg-surface-dim transition-all">MF</button>
+<button class="flex-shrink-0 h-8 px-4 rounded-full bg-surface-variant text-on-surface-variant font-label-md flex items-center justify-center hover:bg-surface-dim transition-all">Forex</button>
+<button class="flex-shrink-0 h-8 px-4 rounded-full bg-surface-variant text-on-surface-variant font-label-md flex items-center justify-center hover:bg-surface-dim transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">star</span> Champion
+            </button>
+<button class="flex-shrink-0 h-8 px-4 rounded-full bg-surface-variant text-on-surface-variant font-label-md flex items-center justify-center hover:bg-surface-dim transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">verified</span> Prime
+            </button>
+<div class="w-4 flex-shrink-0"></div>
+</div>
+<!-- Client Cards List -->
+<div class="flex flex-col gap-card-gap">
+<!-- Card 1: Rajesh Sharma -->
+<div class="bg-surface-container-lowest rounded-xl p-3 flex flex-col gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.04)] active:shadow-[0_8px_20px_rgba(0,30,64,0.08)] transition-shadow">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-headline-md font-bold flex-shrink-0">
+                            RS
+                        </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-on-surface">Rajesh Sharma</h3>
+<div class="bg-tertiary-container/10 text-tertiary-container px-1.5 py-0.5 rounded text-[10px] font-bold flex items-center gap-0.5" title="Champion Status">
+<span class="material-symbols-outlined text-[12px]" data-weight="fill">star</span>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">history</span> 2 days ago
+                            </p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-variant/50 text-primary flex items-center justify-center hover:bg-secondary-container/50 transition-colors">
+<span class="material-symbols-outlined" data-weight="fill">call</span>
+</button>
+</div>
+<div class="flex flex-wrap gap-1.5 mt-1">
+<span class="bg-blue-100 text-blue-800 font-label-sm px-2 py-1 rounded-sm">LIC</span>
+<span class="bg-amber-100 text-amber-800 font-label-sm px-2 py-1 rounded-sm">MF</span>
+</div>
+</div>
+<!-- Card 2: Priya Mehta -->
+<div class="bg-surface-container-lowest rounded-xl p-3 flex flex-col gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.04)] active:shadow-[0_8px_20px_rgba(0,30,64,0.08)] transition-shadow">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-headline-md font-bold flex-shrink-0">
+                            PM
+                        </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-on-surface">Priya Mehta</h3>
+</div>
+<p class="font-body-md text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">history</span> Yesterday
+                            </p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-variant/50 text-primary flex items-center justify-center hover:bg-secondary-container/50 transition-colors">
+<span class="material-symbols-outlined" data-weight="fill">call</span>
+</button>
+</div>
+<div class="flex flex-wrap gap-1.5 mt-1">
+<span class="bg-green-100 text-green-800 font-label-sm px-2 py-1 rounded-sm">GIC</span>
+<span class="bg-amber-100 text-amber-800 font-label-sm px-2 py-1 rounded-sm">MF</span>
+</div>
+</div>
+<!-- Card 3: Sunil Patel -->
+<div class="bg-surface-container-lowest rounded-xl p-3 flex flex-col gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.04)] active:shadow-[0_8px_20px_rgba(0,30,64,0.08)] transition-shadow">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="w-12 h-12 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-headline-md font-bold flex-shrink-0">
+                            SP
+                        </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-on-surface">Sunil Patel</h3>
+</div>
+<p class="font-body-md text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">history</span> 1 week ago
+                            </p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-variant/50 text-primary flex items-center justify-center hover:bg-secondary-container/50 transition-colors">
+<span class="material-symbols-outlined" data-weight="fill">call</span>
+</button>
+</div>
+<div class="flex flex-wrap gap-1.5 mt-1">
+<span class="bg-blue-100 text-blue-800 font-label-sm px-2 py-1 rounded-sm">LIC</span>
+</div>
+</div>
+<!-- Card 4: Anita Joshi -->
+<div class="bg-surface-container-lowest rounded-xl p-3 flex flex-col gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.04)] active:shadow-[0_8px_20px_rgba(0,30,64,0.08)] transition-shadow">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="w-12 h-12 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-headline-md font-bold flex-shrink-0">
+                            AJ
+                        </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-on-surface">Anita Joshi</h3>
+<div class="bg-slate-200 text-slate-700 px-1.5 py-0.5 rounded text-[10px] font-bold flex items-center gap-0.5" title="Prime Status">
+<span class="material-symbols-outlined text-[12px]" data-weight="fill">verified</span>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">history</span> 2 weeks ago
+                            </p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-variant/50 text-primary flex items-center justify-center hover:bg-secondary-container/50 transition-colors">
+<span class="material-symbols-outlined" data-weight="fill">call</span>
+</button>
+</div>
+<div class="flex flex-wrap gap-1.5 mt-1">
+<span class="bg-amber-100 text-amber-800 font-label-sm px-2 py-1 rounded-sm">MF</span>
+<span class="bg-purple-100 text-purple-800 font-label-sm px-2 py-1 rounded-sm">Forex</span>
+</div>
+</div>
+<!-- Card 5: Vikram Desai -->
+<div class="bg-surface-container-lowest rounded-xl p-3 flex flex-col gap-3 shadow-[0_4px_12px_rgba(0,0,0,0.04)] active:shadow-[0_8px_20px_rgba(0,30,64,0.08)] transition-shadow">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<div class="w-12 h-12 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-headline-md font-bold flex-shrink-0">
+                            VD
+                        </div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-on-surface">Vikram Desai</h3>
+<div class="bg-tertiary-container/10 text-tertiary-container px-1.5 py-0.5 rounded text-[10px] font-bold flex items-center gap-0.5" title="Champion Status">
+<span class="material-symbols-outlined text-[12px]" data-weight="fill">star</span>
+</div>
+</div>
+<p class="font-body-md text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="material-symbols-outlined text-[14px]">history</span> 1 month ago
+                            </p>
+</div>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-variant/50 text-primary flex items-center justify-center hover:bg-secondary-container/50 transition-colors">
+<span class="material-symbols-outlined" data-weight="fill">call</span>
+</button>
+</div>
+<div class="flex flex-wrap gap-1.5 mt-1">
+<span class="bg-blue-100 text-blue-800 font-label-sm px-2 py-1 rounded-sm">LIC</span>
+<span class="bg-green-100 text-green-800 font-label-sm px-2 py-1 rounded-sm">GIC</span>
+<span class="bg-amber-100 text-amber-800 font-label-sm px-2 py-1 rounded-sm">MF</span>
+<span class="bg-purple-100 text-purple-800 font-label-sm px-2 py-1 rounded-sm">Forex</span>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB for adding new client -->
+<button class="fixed bottom-24 right-4 md:bottom-8 md:right-8 w-14 h-14 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-[0_8px_20px_rgba(0,30,64,0.25)] hover:scale-105 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+<!-- Mobile Bottom Navigation Bar (From Shared Components) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2 pb-safe bg-surface shadow-[0_-4px_16px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant w-touch-target h-touch-target hover:bg-secondary-container/30 transition-all active:scale-90 duration-150 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-sm">Home</span>
+</a>
+<!-- Active Tab: Clients -->
+<a class="flex flex-col items-center justify-center text-primary font-bold w-touch-target h-touch-target hover:bg-secondary-container/30 transition-all active:scale-90 duration-150 rounded-lg relative" href="#">
+<div class="absolute top-0 w-8 h-1 bg-primary rounded-b-full"></div>
+<span class="material-symbols-outlined mb-1" data-icon="group" data-weight="fill">group</span>
+<span class="font-label-sm">Clients</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant w-touch-target h-touch-target hover:bg-secondary-container/30 transition-all active:scale-90 duration-150 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="campaign">campaign</span>
+<span class="font-label-sm">Broadcasts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant w-touch-target h-touch-target hover:bg-secondary-container/30 transition-all active:scale-90 duration-150 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="assignment">assignment</span>
+<span class="font-label-sm">Tasks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant w-touch-target h-touch-target hover:bg-secondary-container/30 transition-all active:scale-90 duration-150 rounded-lg" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="font-label-sm">Settings</span>
+</a>
+</nav>
+<script>
+        // Simple JS for filter chip interaction visual feedback
+        document.addEventListener('DOMContentLoaded', () => {
+            const chips = document.querySelectorAll('.overflow-x-auto button');
+            chips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    // Remove active state from all
+                    chips.forEach(c => {
+                        c.classList.remove('bg-primary', 'text-on-primary');
+                        c.classList.add('bg-surface-variant', 'text-on-surface-variant');
+                    });
+                    // Add active state to clicked
+                    chip.classList.remove('bg-surface-variant', 'text-on-surface-variant');
+                    chip.classList.add('bg-primary', 'text-on-primary');
+                });
+            });
+        });
+    </script>
+</body></html>

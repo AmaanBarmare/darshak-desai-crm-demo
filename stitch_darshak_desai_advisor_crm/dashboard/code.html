@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dashboard - Advisor Connect</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#f9f9fe",
+                        "background": "#f9f9fe",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#a7c8ff",
+                        "on-secondary-container": "#54647a",
+                        "on-surface-variant": "#43474f",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed": "#341100",
+                        "surface-container-high": "#e8e8ed",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#ffb690",
+                        "surface-container-low": "#f4f3f8",
+                        "inverse-primary": "#a7c8ff",
+                        "tertiary-fixed": "#ffdbca",
+                        "tertiary-container": "#592300",
+                        "on-primary-fixed": "#001b3c",
+                        "inverse-on-surface": "#f1f0f5",
+                        "primary-container": "#003366",
+                        "surface-tint": "#3a5f94",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#799dd6",
+                        "inverse-surface": "#2f3034",
+                        "outline": "#737780",
+                        "surface-container": "#eeedf2",
+                        "on-secondary-fixed": "#0b1c30",
+                        "outline-variant": "#c3c6d1",
+                        "on-tertiary-container": "#d8885c",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#dad9de",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#381300",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "secondary": "#505f76",
+                        "secondary-container": "#d0e1fb",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-surface": "#1a1c1f",
+                        "primary-fixed": "#d5e3ff",
+                        "surface-variant": "#e2e2e7",
+                        "on-primary-fixed-variant": "#1f477b",
+                        "surface-bright": "#f9f9fe",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "primary": "#001e40",
+                        "on-tertiary-fixed-variant": "#723610",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#1a1c1f",
+                        "surface-container-highest": "#e2e2e7",
+                        "on-error-container": "#93000a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "touch-target": "48px",
+                        "section-margin": "24px",
+                        "card-gap": "12px",
+                        "container-padding": "16px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Manrope"],
+                        "label-sm": ["Manrope"],
+                        "headline-md": ["Manrope"],
+                        "headline-sm": ["Manrope"],
+                        "display-lg": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "label-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-sm": ["10px", { "lineHeight": "12px", "fontWeight": "700" }],
+                        "headline-md": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .shadow-ambient {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+        .shadow-fab {
+            box-shadow: 0 8px 20px rgba(0, 30, 64, 0.08);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24 md:pb-8 selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface text-primary dark:text-primary-fixed-dim font-headline-sm text-headline-sm w-full top-0 sticky z-40 bg-surface dark:bg-surface">
+<div class="flex items-center justify-between px-container-padding h-touch-target w-full">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-variant flex-shrink-0">
+<img alt="Advisor Profile" class="w-full h-full object-cover" data-alt="A professional headshot of an Indian male financial advisor in his early 40s wearing a tailored navy blue suit and crisp white shirt. The background is a softly blurred modern office interior with warm, high-key lighting. The overall mood conveys institutional trust, premium reliability, and approachable expertise within a bright, light-mode fintech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEdjjQamDhArkqkSxJOrsW3Nzp6ixNxTT7UHudRxJWF9dCXJ5ZkyJetheM4Io-HfXcUZ4ylGEP2qx4O9qeClPoz-9oPu3XhldFpYUhwsUUKOhCVcB8jhuLBrW5T0rO-wKpjRQzWqFAmcCa1Al4NH08qH2RLXH-r1pAFbOSIktTsUmSXUPXO8vz0MBR21cwCJkoaKfC3BKFW6bPbAeuuLtg0CVHMcafYer-NV6oU1RP2vvyzDI-d2wDdA2sIXOLxhDcPbeEBnrRTMo"/>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">Advisor Connect</span>
+</div>
+<button aria-label="Notifications" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant/50 transition-colors active:scale-95 duration-200 text-on-surface-variant dark:text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Content Container -->
+<main class="md:max-w-screen-md md:mx-auto px-container-padding pt-4 flex flex-col gap-section-margin">
+<!-- Welcome Section -->
+<section class="flex flex-col gap-1">
+<h1 class="font-headline-md text-headline-md text-primary">Good morning, Darshak</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Thursday, October 26</p>
+</section>
+<!-- KPI Bento Grid -->
+<section class="grid grid-cols-2 gap-card-gap">
+<div class="bg-surface-container-lowest rounded-lg p-3 shadow-ambient border border-surface-variant/50 flex flex-col justify-between aspect-[4/3]">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">group</span>
+<span class="font-label-md text-label-md">Total Clients</span>
+</div>
+<div class="font-display-lg text-display-lg text-primary mt-2">1,200</div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-3 shadow-ambient border border-surface-variant/50 flex flex-col justify-between aspect-[4/3]">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">autorenew</span>
+<span class="font-label-md text-label-md">Renewals</span>
+</div>
+<div class="font-display-lg text-display-lg text-primary mt-2">45<span class="font-body-md text-body-md text-on-surface-variant ml-1">mo</span></div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-3 shadow-ambient border border-surface-variant/50 flex flex-col justify-between aspect-[4/3]">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">cake</span>
+<span class="font-label-md text-label-md">Birthdays</span>
+</div>
+<div class="font-display-lg text-display-lg text-primary mt-2">12<span class="font-body-md text-body-md text-on-surface-variant ml-1">wk</span></div>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-3 shadow-ambient border border-surface-variant/50 flex flex-col justify-between aspect-[4/3]">
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">pending_actions</span>
+<span class="font-label-md text-label-md">Pending</span>
+</div>
+<div class="font-display-lg text-display-lg text-primary mt-2">8</div>
+</div>
+</section>
+<!-- Upcoming Renewals -->
+<section class="flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-sm text-headline-sm text-primary">Upcoming Renewals</h2>
+<button class="font-label-md text-label-md text-surface-tint hover:underline">View All</button>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-3 shadow-ambient border border-surface-variant/50 relative overflow-hidden group hover:shadow-md transition-shadow">
+<!-- Status Badge -->
+<div class="absolute top-0 right-0 bg-secondary-container text-on-secondary-container font-label-sm text-label-sm px-2 py-1 rounded-bl-lg font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">star</span> Champion
+                </div>
+<div class="flex gap-4 items-start mt-2">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center text-primary font-headline-sm text-headline-sm flex-shrink-0">
+                        RS
+                    </div>
+<div class="flex-1 flex flex-col gap-2">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Rajesh Sharma</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span> June 10
+                            </p>
+</div>
+<div class="flex flex-wrap gap-2 items-center">
+<span class="bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm px-2 py-1 rounded">LIC</span>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm px-2 py-1 rounded">MF</span>
+<span class="bg-error-container text-on-error-container font-label-sm text-label-sm px-2 py-1 rounded-full ml-auto">8 days remaining</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Birthdays This Week -->
+<section class="flex flex-col gap-3">
+<h2 class="font-headline-sm text-headline-sm text-primary">Birthdays This Week</h2>
+<div class="flex overflow-x-auto gap-card-gap snap-x snap-mandatory no-scrollbar -mx-container-padding px-container-padding pb-4">
+<div class="bg-surface-container-lowest rounded-lg p-3 shadow-ambient border border-surface-variant/50 min-w-[240px] snap-start flex gap-3 items-center">
+<div class="w-10 h-10 rounded-full bg-tertiary-container text-on-tertiary flex items-center justify-center font-headline-sm flex-shrink-0">
+                        PM
+                    </div>
+<div class="flex-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Priya Mehta</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">June 4</p>
+</div>
+<button class="w-8 h-8 rounded-full bg-primary-fixed text-on-primary-fixed-variant flex items-center justify-center hover:bg-primary-fixed-dim transition-colors flex-shrink-0">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+</div>
+<!-- Placeholder for scroll -->
+<div class="bg-surface-container-lowest rounded-lg p-3 shadow-ambient border border-surface-variant/50 min-w-[240px] snap-start flex gap-3 items-center opacity-70">
+<div class="w-10 h-10 rounded-full bg-surface-variant text-on-surface-variant flex items-center justify-center font-headline-sm flex-shrink-0">
+                        AK
+                    </div>
+<div class="flex-1">
+<h3 class="font-headline-sm text-headline-sm text-on-surface leading-tight">Amit Kumar</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm">June 6</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Today's Tasks -->
+<section class="flex flex-col gap-3">
+<div class="flex justify-between items-center">
+<h2 class="font-headline-sm text-headline-sm text-primary">Today's Tasks</h2>
+</div>
+<div class="bg-surface-container-lowest rounded-lg shadow-ambient border border-surface-variant/50 divide-y divide-surface-variant/50">
+<label class="flex items-start gap-3 p-3 cursor-pointer group hover:bg-surface-container-low transition-colors rounded-t-lg">
+<div class="pt-0.5">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary focus:ring-offset-surface" type="checkbox"/>
+</div>
+<div class="flex-1">
+<p class="font-body-lg text-body-lg text-on-surface group-hover:text-primary transition-colors">Call Vikram Desai re: MF renewal</p>
+<p class="font-body-md text-body-md text-error flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Due today
+                        </p>
+</div>
+</label>
+</div>
+</section>
+<!-- Bottom spacing for FAB -->
+<div class="h-16"></div>
+</main>
+<!-- Floating Action Button (FAB) -->
+<button aria-label="Add Client" class="fixed bottom-[88px] right-4 md:right-8 w-[56px] h-[56px] rounded-full bg-primary text-on-primary shadow-fab flex items-center justify-center hover:scale-105 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-2 pb-safe bg-surface dark:bg-surface border-t border-outline-variant dark:border-outline shadow-lg">
+<!-- Active Tab: Home -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold active:scale-90 duration-150 p-2 min-w-[64px]" href="#">
+<div class="px-4 py-1 rounded-full bg-secondary-container/50 mb-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+</div>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<!-- Inactive Tabs -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-secondary-container/30 transition-all active:scale-90 duration-150 p-2 min-w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1">group</span>
+<span class="font-label-md text-label-md">Clients</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-secondary-container/30 transition-all active:scale-90 duration-150 p-2 min-w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1">campaign</span>
+<span class="font-label-md text-label-md">Broadcasts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-secondary-container/30 transition-all active:scale-90 duration-150 p-2 min-w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1">assignment</span>
+<span class="font-label-md text-label-md">Tasks</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-secondary-container/30 transition-all active:scale-90 duration-150 p-2 min-w-[64px]" href="#">
+<span class="material-symbols-outlined mb-1">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</body></html>
